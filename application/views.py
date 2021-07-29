@@ -4,6 +4,8 @@ from . import models
 
 def load(request):
     obj = models.Apk.objects.first()
-    print(obj.file)
-    return render(request, 'home.html', {'file_path': obj.file})
+    file_path = None
+    if obj is not None:
+        file_path = obj.file
+    return render(request, 'home.html', {'file_path': file_path})
 
